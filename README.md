@@ -107,7 +107,7 @@ Interactive Streamlit app that accepts a CSV of customer records and returns chu
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/your-username/churn-prediction.git
+git clone https://github.com/Syed-AbdulMoeed/churn-prediction-pipeline.git
 cd churn-prediction
 ```
 
