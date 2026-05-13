@@ -44,11 +44,6 @@ churn-prediction/
 │   ├── 03_modelling.ipynb
 │   └── 04_evaluation.ipynb
 │
-├── src/
-│   ├── features.py           # Feature engineering functions
-│   ├── train.py              # Model training script
-│   └── predict.py            # Inference logic
-│
 ├── models/
 │   └── model.pkl             # Saved best model + pipeline
 │
