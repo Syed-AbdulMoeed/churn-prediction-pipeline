@@ -11,7 +11,7 @@ A machine learning project to predict customer churn from structured CRM/telecom
 | Model | ROC-AUC | F1 Score | Precision | Recall |
 |---|---|---|---|---|
 | Logistic Regression (baseline) | 0.84 | 0.74 | 0.5 | 0.79 |
-| Random Forest | — | — | — | — |
+| Random Forest | 0.82 | 0.54 | 0.61 | 0.49 |
 | XGBoost (final) | — | — | — | — |
 
 *Metrics to be filled in during Week 3.*
