@@ -10,11 +10,12 @@ A machine learning project to predict customer churn from structured CRM/telecom
 
 | Model | ROC-AUC | F1 Score | Precision | Recall |
 |---|---|---|---|---|
-| Logistic Regression (baseline) | 0.84 | 0.74 | 0.5 | 0.79 |
-| Random Forest | 0.82 | 0.54 | 0.61 | 0.49 |
-| XGBoost (final) | — | — | — | — |
+| Logistic Regression (baseline) | 0.8419 | 0.74 | 0.50 | 0.79 |
+| Random Forest | 0.8206 | 0.54 | 0.61 | 0.49 |
+| XGBoost (default) | 0.8197 | 0.60 | 0.54 | 0.68 |
+| XGBoost (tuned) | 0.8451 | 0.75 | 0.52 | 0.80 |
 
-*Metrics to be filled in during Week 3.*
+
 *Precision, Recall, F1 Score is for Churn(1) Predicition*
 
 ---
@@ -91,10 +92,10 @@ Interactive Streamlit app that accepts a CSV of customer records and returns chu
 
 ## Key findings
 
-*(To be filled in after Week 3)*
 
-- Most important churn predictors: ...
-- Contract type had the highest impact because ...
+
+- Most important churn predictors: Contract Type, Tenure, Total_Spending, Monthly_Spending
+- Contract type had the highest impact because customers with monthly contract have committed for a lower time frame and are more likely to churn.
 - Model performs best on customers with tenure > X months
 
 ---
