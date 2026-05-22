@@ -22,7 +22,30 @@ if uploaded_file is not None:
     st.subheader("Uploaded Data")
     st.dataframe(df)
 
-    # Show predictions
+    #--- Preprocessing -----------------------------
+    df_processed = df.copy()
+    
+    # Drop customerID if present
+    if 'customerID' in df_processed.columns:
+        df_processed.drop(columns=['customerID'], inplace=True)
+
+    # One hot encoding Categoricals
+    df_processed = pd.get_dummies( df, columns = ['Contract', 'PaymentMethod', 'InternetService'], dtype=int )    
+
+    # Encoding Binary
+    binary_cols = df_processed.select_dtypes(include='object').columns
+    
+    df_processed[binary_cols] = df_processed[binary_cols].apply(
+        lambda col : col.map({
+        'Yes': 1, 'No': 0, 'Female': 1, 'Male': 0,
+        'No phone service': 0, 'No internet service': 0
+        })
+    )
+
+    # Scaling Numericals
+    num_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
+    
+    
     scaled = scaler.fit_transform(df)
     predictions = model.predict(scaled)
     input, ans = st.columns(2)
