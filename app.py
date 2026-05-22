@@ -22,7 +22,7 @@ if uploaded_file is not None:
     st.subheader("Uploaded Data")
     st.dataframe(df)
 
-    #--- Preprocessing -----------------------------
+    #--- Preprocessing -------------------------------------------
     df_processed = df.copy()
     
     # Drop customerID if present
@@ -44,13 +44,16 @@ if uploaded_file is not None:
 
     # Scaling Numericals
     num_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
-    
-    
-    scaled = scaler.fit_transform(df)
-    predictions = model.predict(scaled)
-    input, ans = st.columns(2)
-    input = st.dataframe(df)
-    ans = st.dataframe(predictions)
+    df_processed[num_cols] = scaler.transform(df_processed[num_cols])
+
+    # Aligning columns to match the training data exactly
+    model_cols = model.get_booster().feature_names
+    df_processed.reindex(columns=model_cols, fill_value=0)
+
+    #--- Predictions ----------------------------------------------
+    churn_prob = model.predict_proba(df_processed)[:, 1]
+    churn_pred = model.predict(df_processed)
+
 
 else:
     st.info("Please upload a CSV file to get started.")
