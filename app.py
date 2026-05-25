@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import shap
+import matplotlib.pyplot as plt    
 
 # Load saved model and scaler
 model = joblib.load('models/best_xgb.pkl')
@@ -54,6 +56,31 @@ if uploaded_file is not None:
     churn_prob = model.predict_proba(df_processed)[:, 1]
     churn_pred = model.predict(df_processed)
 
+    #--- Display Results ------------------------------------------
+    st.subheader("Predictions")
+
+    # Adding prediction cols 
+    results = df.copy()
+    results["Churn Probability"] = (churn_prob * 100).round(1).astype(str) + '%'
+    results['Prediction'] = ['Will Churn' if p == 1 else 'Will Stay' for p in churn_pred]
+
+    # Showing only the relevant columns
+    display_cols = ['Churn Probability', 'Prediction']
+    if 'customerID' in df.columns:
+        display_cols = ['customerID'] + display_cols
+
+    st.dataframe(results[display_cols], use_container_width=True)
+
+    # Summary metrics
+
+    #--- SHAP Chart ------------------------------------------------
+    st.subheader("Top Churn Risk Factors")
+    st.markdown("What is driving churn predictions across all uploaded customers?")
+
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer(df_processed)
+
+    fig, ax = plt.subplots(figsize=(10, 6))
 
 else:
     st.info("Please upload a CSV file to get started.")
