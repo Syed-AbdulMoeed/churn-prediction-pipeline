@@ -25,12 +25,12 @@ if uploaded_file is not None:
     #--- Preprocessing -------------------------------------------
     df_processed = df.copy()
     
-    # Drop customerID if present
-    if 'customerID' in df_processed.columns:
-        df_processed.drop(columns=['customerID'], inplace=True)
+    # Drop specific columns 
+    cols_to_drop = ['customerID', 'Churn']
+    df_processed.drop(columns=[col for col in cols_to_drop if col in df_processed.columns], inplace=True)
 
     # One hot encoding Categoricals
-    df_processed = pd.get_dummies( df, columns = ['Contract', 'PaymentMethod', 'InternetService'], dtype=int )    
+    df_processed = pd.get_dummies( df_processed, columns = ['Contract', 'PaymentMethod', 'InternetService'], dtype=int )    
 
     # Encoding Binary
     binary_cols = df_processed.select_dtypes(include='object').columns
@@ -48,7 +48,7 @@ if uploaded_file is not None:
 
     # Aligning columns to match the training data exactly
     model_cols = model.get_booster().feature_names
-    df_processed.reindex(columns=model_cols, fill_value=0)
+    df_processed = df_processed.reindex(columns=model_cols, fill_value=0)
 
     #--- Predictions ----------------------------------------------
     churn_prob = model.predict_proba(df_processed)[:, 1]
