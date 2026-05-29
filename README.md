@@ -94,9 +94,10 @@ Interactive Streamlit app that accepts a CSV of customer records and returns chu
 
 
 
-- Most important churn predictors: Contract Type, Tenure, Total_Spending, Monthly_Spending
+- Most important churn predictors: Contract Type, Tenure, Total_Spending, Monthly_Spending backed by the SHAP analysis
 - Contract type had the highest impact because customers with monthly contract have committed for a lower time frame and are more likely to churn.
-- Model performs best on customers with tenure > X months
+- Customers with Fiber Optics service are very likely to churn
+- Customers with the Electronic Payment Method are also more likely to churn 
 
 ---
 
