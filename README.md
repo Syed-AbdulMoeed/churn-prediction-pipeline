@@ -90,14 +90,35 @@ Interactive Streamlit app that accepts a CSV of customer records and returns chu
 
 ---
 
-## Key findings
+## Key Findings
+Analysis was conducted through bivariate EDA and validated by SHAP feature 
+importance on the final XGBoost model.
 
+**Contract type is the single strongest churn predictor.** Month-to-month 
+customers churn at ~43% compared to ~3% for two-year contract holders. Customers 
+on short-term contracts have no switching cost, making them the highest priority 
+segment for retention efforts.
 
+**Churn is heavily front-loaded by tenure.** Customers who churn do so early — 
+churners average ~18 months tenure vs ~38 months for retained customers. This 
+suggests the first 12 months are the critical retention window.
 
-- Most important churn predictors: Contract Type, Tenure, Total_Spending, Monthly_Spending backed by the SHAP analysis
-- Contract type had the highest impact because customers with monthly contract have committed for a lower time frame and are more likely to churn.
-- Customers with Fiber Optics service are very likely to churn
-- Customers with the Electronic Payment Method are also more likely to churn 
+**Fiber optic internet customers churn at a disproportionately high rate.** 
+This may reflect pricing dissatisfaction or service quality issues, or may be 
+confounded by fiber optic customers being more likely to hold month-to-month 
+contracts. Requires further business investigation.
+
+**Electronic check payment correlates with higher churn.** Customers paying 
+by electronic check churn more than those on automatic payment methods — 
+automatic payments may act as a passive retention mechanism by reducing 
+friction to continue the service.
+
+**Price sensitivity is a factor.** Churners pay higher average monthly charges 
+(~$74) compared to retained customers (~$61), suggesting a segment that is 
+actively shopping for better value.
+
+**Streaming services, phone service, and multiple lines showed no meaningful 
+churn signal** and are unlikely to add value as retention targeting criteria.
 
 ---
 
