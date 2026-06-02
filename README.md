@@ -100,8 +100,8 @@ on short-term contracts have no switching cost, making them the highest priority
 segment for retention efforts.
 
 **Churn is heavily front-loaded by tenure.** Customers who churn do so early — 
-churners average ~18 months tenure vs ~38 months for retained customers. This 
-suggests the first 12 months are the critical retention window.
+churners have a median of ~12 months tenure vs ~38 months for retained customers. This 
+suggests the first year is the critical retention window.
 
 **Fiber optic internet customers churn at a disproportionately high rate.** 
 This may reflect pricing dissatisfaction or service quality issues, or may be 
