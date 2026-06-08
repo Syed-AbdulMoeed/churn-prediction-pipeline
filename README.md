@@ -2,7 +2,7 @@
 
 A machine learning project to predict customer churn from structured CRM/telecom data. Built as a full end-to-end pipeline — from raw data to a deployed interactive web application.
 
-**Live demo:** *(link added on completion)*
+[**Live demo**](https://churn-prediction-pipeline-9eon9mkqvkec6s4mvrjnqq.streamlit.app/)
 
 ---
 
