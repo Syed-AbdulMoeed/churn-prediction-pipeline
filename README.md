@@ -36,22 +36,22 @@ This project uses the [Telco Customer Churn dataset](https://www.kaggle.com/data
 churn-prediction/
 │
 ├── data/
-│   ├── raw/                  # Original downloaded dataset (not modified)
-│   └── processed/            # Cleaned and feature-engineered data
+│   ├── processed/                  # Cleaned and feature-engineered data
+│   └── Telco-Customer-Churn.csv    # Original downloaded dataset (not modified)
 │
 ├── notebooks/
-│   ├── 01_eda.ipynb          # Exploratory data analysis
+│   ├── 01_eda.ipynb                # Exploratory data analysis
 │   ├── 02_preprocessing.ipynb
 │   ├── 03_modelling.ipynb
 │   └── 04_evaluation.ipynb
 │
 ├── models/
-│   └── model.pkl             # Saved best model + pipeline
+│   └── model.pkl                   # Saved best model + pipeline
 │
 ├── reports/
-│   └── project_report.pdf    # Final write-up with methodology and results
+│   └── project_report.pdf          # Final write-up with methodology and results
 │
-├── app.py                    # Streamlit web application
+├── app.py                          # Streamlit web application
 ├── requirements.txt
 └── README.md
 ```
